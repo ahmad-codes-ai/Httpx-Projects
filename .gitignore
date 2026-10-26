@@ -1,0 +1,26 @@
+# Python bytecode cache (compiled files)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environments
+env/
+venv/
+.env/
+.venv/
+ENV/
+vcs/
+
+# Environment Variables / Secrets (Never push keys to GitHub)
+.env
+.env.secret
+
+# IDE and Editor configs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
