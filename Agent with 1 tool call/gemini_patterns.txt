@@ -1,0 +1,93 @@
+The Gemini will always return a tool call in this format 
+
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "name": "get_random_number",
+              "args": {
+                "max_num": 50
+              }
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": { ... }
+}
+
+
+
+
+To send tools to Gemini in payload just write 'tools' : tools while tool been a list like:
+
+tools = [                                    # List of all tools (fucntions) provided to an AI
+    {
+        "function_declarations": [
+            {
+                "name": "get_random_number",
+                "description": "Generates a random number between 0 and the provided maximum number.",
+                "parameters": {
+                    "type": "OBJECT",
+                    "properties": {      # The parameters that are needed
+                        "max_num": {
+                            "type": "INTEGER",   # Could be a STRING too 
+                            "description": "The maximum possible number."
+                        }   # If another parameter exits come after this
+                    },
+                    "required": ["max_num"]    # Which parameteres are mandatory 
+                }
+            }  # If there exist another tool another dict will follow same pattern from here 
+        ]
+    }
+]
+
+
+
+
+
+When send a text response 
+
+
+
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "An API (Application Programming Interface) is a set of rules that allows different software applications to communicate and share data with one another.",
+            "thoughtSignature": "EsoNCscNAW..."
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 9,
+    "candidatesTokenCount": 26,
+    "totalTokenCount": 416,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 9
+      }
+    ],
+    "thoughtsTokenCount": 381,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.6-flash",
+  "responseId": "3_beavubIPmFkdUPhbzEuAU"
+}

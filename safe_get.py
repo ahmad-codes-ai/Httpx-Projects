@@ -1,3 +1,5 @@
+
+
 def safe_get(data,*keys,defualt=None,expected_type=None):
 
 
