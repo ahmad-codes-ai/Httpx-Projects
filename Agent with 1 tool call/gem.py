@@ -127,10 +127,6 @@ while True:    # Outer loop for the input
             
             if results:
 
-                history.append({'role':'model',
-                                'parts':ai_response}
-                                )
-
                 history.append(
                     {'role':'user',
                      'parts': results}
