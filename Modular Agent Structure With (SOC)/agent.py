@@ -57,12 +57,31 @@ class Agent():
                     args = call.get('args')
 
                     if name in registery:
-                        func = registery[name]['function']
-                        result = func(**args)
+                        try:
+                            func = registery[name]['function']
+                            result = func(**args)
+                            d = {
+                            "functionResponse": {
+                            "name": name,
+                            "response": result
+                                }
+                            }
+                            tool_responses.append(d)
+
+                        except Exception as e:
+                            d = {
+                            "functionResponse": {
+                            "name": name,
+                            "response": {'error':f"This error occured {e}"}
+                                }
+                            }
+                            tool_responses.append(d)
+                            
+                    else:
                         d = {
                         "functionResponse": {
                         "name": name,
-                        "response": result
+                        "response": {'error':f'The tool {name} does not exist'}
                             }
                         }
                         tool_responses.append(d)
