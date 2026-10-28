@@ -28,11 +28,10 @@ ser_client = httpx.Client(
 )
 
 jina_client = httpx.Client(
-    base_url = "https://jina.ai/",
+    base_url = "https://r.jina.ai",
     headers = {
         "Accept": "application/json",
         "Authorization": f"Bearer {Jina_Api}",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
     },
     timeout = 60
 )
