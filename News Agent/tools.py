@@ -37,8 +37,10 @@ def save_to_file(file_name,text):
 
 
 
+
+
       
-TOOL_REGISTRY = {
+registery = {
     'search_google': {
         'function': search_google,
         'schema': {
